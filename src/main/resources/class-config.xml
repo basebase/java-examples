@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+    <class className="com.moyu.example.structure.reflect.Son">
+        <method methodName="privateMethod">
+            <params>
+                <type>String</type>
+                <value>Joker</value>
+            </params>
+            <params>
+                <type>int</type>
+                <value>666</value>
+            </params>
+        </method>
+    </class>
+</root>
