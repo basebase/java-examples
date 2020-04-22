@@ -20,11 +20,14 @@ public class RightWayStopThreadWithSleep {
           }
         };
 
-        Thread thread = new Thread(runnable);
-        thread.start();
+        Thread t1 = new Thread(runnable);
+        t1.start();
 
+        // 等待1s让线程t1优先执行
         Thread.sleep(1000);
-        thread.interrupt();
+        // t1线程休眠2s, main线程执行中断线程, 但是t1处于阻塞状态
+        // 那么t1退出阻塞状态并抛出一个java.lang.InterruptedException异常
+        t1.interrupt();
 
         System.out.println(Thread.currentThread().getName() + " 线程结束");
     }
