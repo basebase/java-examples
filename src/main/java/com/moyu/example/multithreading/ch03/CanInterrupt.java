@@ -18,6 +18,7 @@ public class CanInterrupt {
                 System.out.println("当前值为: " + num);
                 try {
                     Thread.sleep(300);
+//                    System.out.println("当前值为: " + num);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
