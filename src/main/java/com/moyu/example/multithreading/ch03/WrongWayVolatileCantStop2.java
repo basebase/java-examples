@@ -47,7 +47,7 @@ class Producer implements Runnable {
             int num = 0;
             while (num < 100000 && !canceled) {
                 System.out.println("当前值: " + num + " 放入队列中了!");
-                storage.put(num);
+                storage.put(num); // 当队列满了, 线程在这里就会被挂起
                 Thread.sleep(10);
                 num ++;
             }

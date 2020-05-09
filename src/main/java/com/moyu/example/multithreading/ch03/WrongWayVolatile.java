@@ -29,6 +29,8 @@ public class WrongWayVolatile {
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                System.out.println("线程终止...");
             }
         };
     }
