@@ -39,7 +39,7 @@ public class JoinInterrupt {
         } catch (InterruptedException e) {
             System.out.println(Thread.currentThread().getName() + " 被中断了.");
             e.printStackTrace();
-            t1.interrupt(); // 如果我们注释掉此语句后, 可以看到程序不会立即终止, 而是进入一段等待时间。
+            t1.interrupt(); // 如果我们注释掉此语句后, 可以看到程序不会立即终止, 而是按照子线程原有逻辑时间输出。
         }
 
         System.out.println(Thread.currentThread().getName() + " 结束");
