@@ -33,11 +33,11 @@ public class MultiThreadsErrorMarkSync {
 
     public static Runnable task() {
         return () -> {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10000; i++) {
                 value ++;
                 realCount.incrementAndGet();
 
-                System.out.println("init : " + Thread.currentThread().getName());
+//                System.out.println("init : " + Thread.currentThread().getName());
 
                 /***
                  *  可以发现即使加了sync进行保护, 我们的数据依旧对应不回去?
@@ -50,7 +50,7 @@ public class MultiThreadsErrorMarkSync {
                  *
                  */
                 synchronized (lock) {
-                    System.out.println("sync : " + Thread.currentThread().getName());
+//                    System.out.println("sync : " + Thread.currentThread().getName());
                     if (marked[value]) {
                         System.out.println("发生了错误: " + value);
                         wrongCount.incrementAndGet();
