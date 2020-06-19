@@ -2,10 +2,11 @@ package com.moyu.example.multithreading.juc.ch02;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /***
- *      描述:         在多个线程下不使用ThreadLocal使用SimpleDateFormat类
- *                   SimpleDateFormat类是线程不安全的
+ *      描述:     通过线程池创建N多个线程打印出指定的时间
  */
 
 public class ThreadLocalSimpleDateFormatTest01 {
@@ -17,18 +18,31 @@ public class ThreadLocalSimpleDateFormatTest01 {
         return dateFormat.format(date);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        new Thread(() -> {
-            String date =
-                    new ThreadLocalSimpleDateFormatTest01().date(10);
-            System.out.println(date);
-        }, "Thread-A").start();
+        ExecutorService executorService =
+                Executors.newFixedThreadPool(10);
 
-        new Thread(() -> {
-            String date =
-                    new ThreadLocalSimpleDateFormatTest01().date(1000);
-            System.out.println(date);
-        }, "Thread-B").start();
+        /****
+         *      从输出上来看, 数据是没有任何问题的。
+         *      是的, 这个例子中是使用SimpleDateFormat是没有问题的, 因为每个线程都会new一个SimpleDateFormat对象
+         *      所以每个对象都持有自己的SimpleDateFormat对象互不干扰。
+         *
+         *      但是请注意, 我们现在是循环遍历提交1000次, 这就意味着我们要创建1000个SimpleDateFormat对象
+         *      如果是1w个任务呢? 要创建1w个SimpleDateFormat对象? 显然这是不行的
+         */
+
+        for (int i = 0; i < 1000; i++) {
+            int finalI = i;
+            executorService.execute(() -> {
+                String date =
+                        new ThreadLocalSimpleDateFormatTest01().date(finalI);
+                System.out.println(date);
+            });
+
+//            Thread.sleep(100);
+        }
+
+        executorService.shutdown();
     }
 }
