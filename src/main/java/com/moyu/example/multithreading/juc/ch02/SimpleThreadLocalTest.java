@@ -51,14 +51,30 @@ public class SimpleThreadLocalTest {
          *      set方法分析
          */
 
-        Thread t3 = new Thread(() -> {
+//        Thread t3 = new Thread(() -> {
+//            Province p = new Province();
+//            p.setName("西藏");
+//            provinceThreadLocal.set(p);
+////            Province province = provinceThreadLocal.get();
+////            System.out.println(province.getName());
+//        }, "Thread-C");
+//        t3.start();
+
+
+        /***
+         *      remove方法分析
+         */
+
+        Thread t4 = new Thread(() -> {
             Province p = new Province();
             p.setName("西藏");
             provinceThreadLocal.set(p);
-//            Province province = provinceThreadLocal.get();
-//            System.out.println(province.getName());
-        }, "Thread-C");
-        t3.start();
+            provinceThreadLocal.remove();
+
+//            Province province2 = provinceThreadLocal.get();
+//            System.out.println(province2.getName());
+        }, "Thread-D");
+        t4.start();
 
     }
 }
