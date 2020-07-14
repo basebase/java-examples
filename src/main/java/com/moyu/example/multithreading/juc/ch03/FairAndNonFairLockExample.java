@@ -55,6 +55,9 @@ public class FairAndNonFairLockExample {
              *          还没有进入阻塞状态, 而我们要唤醒等待队列中的线程是需要时间的, 所以线程Thread-0
              *          可能会再一次获取到锁, 从而在打水一次。
              *
+             *          所以输出结果会出现:
+             *              Thread-0 -> Thread-0 -> Thread-1 -> Thread-1 -> ... Thread-9
+             *
              */
 
             try {
