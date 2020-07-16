@@ -82,6 +82,7 @@ public class ReadWriteLockExample4 {
             writeLock.lock();
             try {
                 System.out.println(Thread.currentThread().getName() + " 获取到写锁");
+                // 这里时间设置短点, 否则我们所有子线程都提交完成了, 看不到效果了
                 Thread.sleep(30);
                 amount += 10;
                 System.out.println(Thread.currentThread().getName() + " 更新数据完成...");
@@ -92,5 +93,4 @@ public class ReadWriteLockExample4 {
             }
         };
     }
-
 }
