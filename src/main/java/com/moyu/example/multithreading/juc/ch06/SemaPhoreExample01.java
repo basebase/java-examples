@@ -24,6 +24,7 @@ public class SemaPhoreExample01 {
             executorService.execute(() -> {
                 System.out.println(Thread.currentThread().getName() + " : " + id + " 申请产假...");
                 try {
+//                    semaphore.acquire(3);
                     semaphore.acquire();
                     System.out.println(Thread.currentThread().getName() + " : " + id + " 申请产假成功!");
                     int r = new Random().nextInt(5) + 1;
@@ -33,6 +34,7 @@ public class SemaPhoreExample01 {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
+//                    semaphore.release(1);
                     semaphore.release();
                 }
             });
