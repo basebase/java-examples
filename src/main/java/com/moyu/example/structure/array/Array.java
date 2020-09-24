@@ -61,13 +61,40 @@ public class Array {
         // 将size - 1的元素移动后size位置
         // 循环结束到要添加指定的位置
         for (int i = size - 1; i >= index; i--) {
-            this.datas[i + 1] = this.datas[i];
+            datas[i + 1] = datas[i];
         }
 
         // 移动完成后, 覆盖旧值
-        this.datas[index] = e;
+        datas[index] = e;
         size ++; // 维护数组元素大小
     }
+
+    /**
+     * 更新数组中的元素值
+     * @param index
+     * @param e
+     */
+    public void set(int index, int e) {
+        /**
+         * 注意看这里使用的>= size, 这是因为在add之后, size会向后移动一位
+         * 假设我们使用的是> size则会访问到没有被赋值的空间数据, 这是不合理的, 因此需要注意
+         */
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("请输入正确的索引位置");
+        datas[index] = e;
+    }
+
+    /**
+     * 获取指定位置的元素
+     * @param index
+     * @return
+     */
+    public int get(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("请输入正确的索引位置");
+        return datas[index];
+    }
+
 
 
     /**
@@ -89,5 +116,20 @@ public class Array {
      */
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(String.format("数组元素个数为: %d 数组容量为: %d \n", size, datas.length));
+        buffer.append("[");
+        for (int i = 0; i < size; i++) {        // 这里使用实际存在多个元素数量, 其余的空间没有被赋值不需要被输出
+            buffer.append(datas[i]);
+            if (i != size - 1)
+                buffer.append(", ");
+        }
+
+        buffer.append("]");
+        return buffer.toString();
     }
 }
