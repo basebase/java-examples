@@ -4,19 +4,19 @@ package com.moyu.example.structure.array;
  *      设计并创建属于一个自己的数组类
  */
 
-public class Array {
+public class Array<E> {
 
     // 实际存放元素个数
     private int size;
     // 数组类型
-    private int[] datas;
+    private E[] datas;
 
     /***
      * 创建数组类, 指定数组大小
      * @param capacity   数组容量
      */
     public Array(int capacity) {
-        this.datas = new int[capacity];
+        this.datas = (E[]) new Object[capacity];
         this.size = 0;      // 创建数组时没有任何有效数据
     }
 
@@ -32,7 +32,7 @@ public class Array {
      * 向数组最后一个位置添加元素
      * @param e   添加元素
      */
-    public void addLast(int e) {
+    public void addLast(E e) {
         this.add(size, e);
 //        if (size == datas.length)
 //            throw new IllegalArgumentException("addLast添加失败, 请检查数组大小");
@@ -40,7 +40,7 @@ public class Array {
 //        this.size ++; // 添加元素后, 维护size大小, 新添加元素的索引位置
     }
 
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         this.add(0, e);
     }
 
@@ -49,7 +49,7 @@ public class Array {
      * @param index     索引位置
      * @param e         元素
      */
-    public void add(int index, int e) {
+    public void add(int index, E e) {
         // 1. 判断数组还有没有容量
         if (size == datas.length)
             throw new IllegalArgumentException("添加失败, 请检查数组大小");
@@ -73,7 +73,7 @@ public class Array {
      * 删除最后一个位置元素
      * @return
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -81,7 +81,7 @@ public class Array {
      * 删除第一个元素
      * @return
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -89,7 +89,7 @@ public class Array {
      * 从数组中删除指定元素
      * @param e
      */
-    public void removeElement(int e) {
+    public void removeElement(E e) {
         int index = find(e);
         if (index != -1)
             remove(index);
@@ -100,17 +100,19 @@ public class Array {
      * @param index
      * @return
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("请输入正确的索引位置");
 
-        int ret = datas[index];
+        E ret = datas[index];
 
         for (int i = index + 1; i < size; i++) {
             datas[i - 1] = datas[i];
         }
 
         size -- ; // 从新维护元素个数
+
+        // datas[size] = null;
 
         return ret;
     }
@@ -120,9 +122,9 @@ public class Array {
      * @param e
      * @return
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (datas[i] == e)
+            if (datas[i].equals(e))
                 return true;
         }
 
@@ -134,9 +136,9 @@ public class Array {
      * @param e
      * @return
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (datas[i] == e)
+            if (datas[i].equals(e))
                 return i;
         }
 
@@ -148,7 +150,7 @@ public class Array {
      * @param index
      * @param e
      */
-    public void set(int index, int e) {
+    public void set(int index, E e) {
         /**
          * 注意看这里使用的>= size, 这是因为在add之后, size会向后移动一位
          * 假设我们使用的是> size则会访问到没有被赋值的空间数据, 这是不合理的, 因此需要注意
@@ -163,7 +165,7 @@ public class Array {
      * @param index
      * @return
      */
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("请输入正确的索引位置");
         return datas[index];
