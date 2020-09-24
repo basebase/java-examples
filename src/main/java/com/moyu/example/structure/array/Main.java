@@ -29,5 +29,22 @@ public class Main {
 
         array.set(12, 985);
         System.out.println(array);
+
+
+        System.out.println();
+        array.remove(1);
+        System.out.println("删除索引1后 " + array);
+
+        array.removeLast();
+        System.out.println(array);
+
+        array.removeFirst();
+        System.out.println(array);
+
+        array.removeElement(666);
+        System.out.println(array);
+
+        array.removeElement(200);
+        System.out.println(array);
     }
 }
