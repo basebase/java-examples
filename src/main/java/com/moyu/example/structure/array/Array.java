@@ -27,6 +27,10 @@ public class Array<E> {
         this(10);
     }
 
+    /**
+     * 动态扩容数组容量
+     * @param newCapacity
+     */
     private void resize(int newCapacity) {
         E[] newDatas = (E[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
