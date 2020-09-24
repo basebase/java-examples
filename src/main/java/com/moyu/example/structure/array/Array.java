@@ -27,6 +27,14 @@ public class Array<E> {
         this(10);
     }
 
+    private void resize(int newCapacity) {
+        E[] newDatas = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newDatas[i] = datas[i];
+        }
+        this.datas = newDatas;
+    }
+
 
     /**
      * 向数组最后一个位置添加元素
@@ -50,13 +58,16 @@ public class Array<E> {
      * @param e         元素
      */
     public void add(int index, E e) {
-        // 1. 判断数组还有没有容量
-        if (size == datas.length)
-            throw new IllegalArgumentException("添加失败, 请检查数组大小");
 
-        // 2. 判断要插入的索引是否合理, 这里我们限制为size, 我们不希望中间出现间隙
+
+        // 1. 判断要插入的索引是否合理, 这里我们限制为size, 我们不希望中间出现间隙
         if (index < 0 || index > size)
             throw new IllegalArgumentException("请输入正确的索引位置");
+
+        // 2. 判断数组还有没有容量
+        if (size == datas.length)
+            resize(datas.length * 2);
+//            throw new IllegalArgumentException("添加失败, 请检查数组大小");
 
         // 将size - 1的元素移动后size位置
         // 循环结束到要添加指定的位置
@@ -113,6 +124,10 @@ public class Array<E> {
         size -- ; // 从新维护元素个数
 
         // datas[size] = null;
+
+        // 如果删除的元素过多使用量减少后也可以重新构建我们的数组, 减少浪费内存空间
+        if (size == datas.length / 2)
+            resize(datas.length / 2);
 
         return ret;
     }

@@ -5,7 +5,7 @@ package com.moyu.example.structure.array;
  */
 public class Main {
     public static void main(String[] args) {
-        Array<Integer> array = new Array(20);
+        Array<Integer> array = new Array();
         // 赋值10个元素
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
@@ -17,34 +17,15 @@ public class Main {
         array.add(2, 200);
         System.out.println(array);
 
-        array.add(5, 666);
-        System.out.println(array);
-
         // 头部添加元素
         array.addFirst(999);
         System.out.println(array);
 
-        System.out.println(array.get(12));
 
-
-        array.set(12, 985);
-        System.out.println(array);
-
-
-        System.out.println();
         array.remove(1);
-        System.out.println("删除索引1后 " + array);
+        System.out.println(array);
 
         array.removeLast();
-        System.out.println(array);
-
-        array.removeFirst();
-        System.out.println(array);
-
-        array.removeElement(666);
-        System.out.println(array);
-
-        array.removeElement(200);
         System.out.println(array);
     }
 }
