@@ -191,6 +191,23 @@ public class Array<E> {
     }
 
 
+    /***
+     *   在stack章节学习中添加获取第一个元素和最后一个元素
+     */
+
+    // 获取数组中第一个元素
+    public E getFirst() {
+        return get(0);
+    }
+
+    // 获取数组中最后一个元素
+    public E getLast() {
+        // 这里使用get方法来返回数据而不直接使用datas[size - 1]返回
+        // 主要怕数组中没有任何元素进而返回一个-1导致一个不合法的索引数据被返回
+        return get(size - 1);
+    }
+
+
 
     /**
      * @return    返回数组元素个数
