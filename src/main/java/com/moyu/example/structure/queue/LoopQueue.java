@@ -67,6 +67,8 @@ public class LoopQueue<E> implements Queue<E> {
 
     @Override
     public E getFront() {
+        if (isEmpty())
+            throw new IllegalArgumentException("队列为空");
         return data[front];
     }
 
