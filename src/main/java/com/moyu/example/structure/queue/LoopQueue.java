@@ -42,9 +42,8 @@ public class LoopQueue<E> implements Queue<E> {
     private void resize(int capacity) {
         E[] newData = (E[]) new Object[capacity + 1];
         int newTail = 0;
-        for (int i = 0; front != tail; i++) {
-            newData[i] = data[front];
-            front = (front + 1) % data.length;
+        for (int i = front; i != tail; i = (i + 1) % data.length) {
+            newData[newTail] = data[i];
             newTail ++;
         }
 
@@ -78,20 +77,16 @@ public class LoopQueue<E> implements Queue<E> {
 
     @Override
     public int getSize() {
-        int tmpFront = front;
         int size = 0;
-        for (int i = 0; front != tail; i++) {
-            front = (front + 1) % data.length;
+        for (int i = front; i != tail; i = (i + 1) % data.length) {
             size ++;
         }
-
-        front = tmpFront;
         return size;
     }
 
     @Override
     public String toString() {
-        StringBuffer res = new StringBuffer("LoopQueue: 队列大小为: " + this.data.length + " 队列元素个数为: " + getSize() + " front = " + front + " tail = " + tail + " \n front [");
+        StringBuffer res = new StringBuffer("LoopQueue: 队列大小为: " + this.data.length + " 队列元素个数为: " + getSize() + " front = " + front + " tail = " + tail + " \nfront [");
         int tmpFront = front;
 
         while (front != tail) {
