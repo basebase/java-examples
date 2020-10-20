@@ -8,9 +8,8 @@ public class LinkedList<E> {
 
     /**
      * Node属于链表内部结构, 不需要对外开放避免外部创建节点破坏结构
-     * @param <E>
      */
-    private class Node<E> {
+    private class Node {
         public E e; // 存放的数据
         public Node next; // 下一个节点的引用
 
@@ -120,5 +119,71 @@ public class LinkedList<E> {
      */
     public void addLast(E e) {
         add(size, e);
+    }
+
+
+    /**
+     * 查询链表index位置元素
+     * @param index
+     * @return
+     */
+    public E get(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("请输入正确索引位置.");
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+
+        return cur.e;
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLaster() {
+        return get(size - 1);
+    }
+
+    /**
+     * 更新链表第index元素数据
+     * @param index
+     * @param e
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("请输入正确索引位置.");
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+
+        cur.e = e;
+    }
+
+    /**
+     * 链表是否包含元素内容
+     * @param e
+     * @return
+     */
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e))
+                return true;
+            cur = cur.next;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer res = new StringBuffer();
+        for (Node cur = dummyHead.next ; cur != null; cur = cur.next)
+            res.append(cur.e).append("->");
+        res.append("NULL");
+        return res.toString();
     }
 }
