@@ -121,6 +121,11 @@ public class LinkedList<E> {
         add(size, e);
     }
 
+    /**
+     * 删除链表节点
+     * @param index
+     * @return
+     */
     public E remove(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("请输入正确索引位置.");
