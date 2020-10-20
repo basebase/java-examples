@@ -33,11 +33,11 @@ public class LinkedList<E> {
         }
     }
 
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     public LinkedList() {
-        this.head = null;
+        dummyHead = new Node(null, null);
         this.size = 0;
     }
 
@@ -67,8 +67,9 @@ public class LinkedList<E> {
 //        head = node;                  // 当前的头结点更新为新添加的节点
 
         // 上面三句等价于下面这一句
-        head = new Node(e, head);
-        size ++;                       // 维护当前节点数量
+//        head = new Node(e, head);
+        add(0, e);
+//        size ++;                       // 维护当前节点数量
     }
 
     /**
@@ -81,28 +82,36 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("请输入正确的索引值.");
         }
 
-        // 1. 处理头结点问题
-        if (index == 0)
-            addFirst(e);
-        else {
-            // 1. 获取要添加位置的前一个位置
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-
-//            // 2. 创建节点
-//            Node node = new Node(e);
-//
-//            // 3. 指向前一个位置的next节点
-//            node.next = prev.next;
-//
-//            // 4. 前一个位置的节点next指向node
-//            prev.next = node;
-
-            prev.next = new Node(e, prev.next);
-            size ++;
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
         }
+
+        prev.next = new Node(e, prev.next);
+        size ++;
+
+        // 1. 处理头结点问题
+//        if (index == 0)
+//            addFirst(e);
+//        else {
+//            // 1. 获取要添加位置的前一个位置
+//            Node prev = head;
+//            for (int i = 0; i < index - 1; i++) {
+//                prev = prev.next;
+//            }
+//
+////            // 2. 创建节点
+////            Node node = new Node(e);
+////
+////            // 3. 指向前一个位置的next节点
+////            node.next = prev.next;
+////
+////            // 4. 前一个位置的节点next指向node
+////            prev.next = node;
+//
+//            prev.next = new Node(e, prev.next);
+//            size ++;
+//        }
     }
 
     /**
