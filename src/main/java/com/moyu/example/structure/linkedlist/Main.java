@@ -15,5 +15,16 @@ public class Main {
 
         linkedList.add(1, 999);
         System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+
+        linkedList.removeLast();
+        System.out.println(linkedList);
+
+        System.out.println(linkedList.getLaster());
     }
 }
