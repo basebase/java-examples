@@ -5,7 +5,7 @@ public class Main {
         Integer[] nums = {50, 18, 20, 88, 77, 100};
         BST<Integer> bst = new BST<>();
         for (Integer num : nums) {
-            bst.add(num);
+            bst.nonAdd(num);
         }
 
         System.out.println(bst.toString());

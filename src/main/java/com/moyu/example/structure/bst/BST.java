@@ -81,6 +81,39 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         return node;
     }
 
+    public void nonAdd(E e) {
+        if (root == null)
+            root = new Node(e);
+        else {
+
+            Node curNode = root;
+            while (curNode != null) {
+                if (curNode.e.compareTo(e) > 0) {
+
+                    if (curNode.left == null)
+                        break;
+                    else
+                        curNode = curNode.left;
+                } else if (curNode.e.compareTo(e) < 0) {
+                    if (curNode.right == null)
+                        break;
+                    else
+                        curNode = curNode.right;
+                }
+            }
+
+
+            if (curNode.e.compareTo(e) > 0) {
+                curNode.left = new Node(e);
+            } else if (curNode.e.compareTo(e) < 0) {
+                curNode.right = new Node(e);
+            }
+
+        }
+
+        size ++;
+    }
+
     public void echo(Node node, StringBuffer buffer) {
         if (node == null)
             return ;
