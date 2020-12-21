@@ -121,11 +121,8 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @param e
      * @return
      */
-    public E find(E e) {
-        Node node = find(root, e);
-        if (node == null)
-            throw new IllegalArgumentException("没有找到查找的值, 请输入正确的查找值");
-        return node.e;
+    public boolean find(E e) {
+        return find(root, e);
     }
 
     /**
@@ -134,19 +131,17 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @param e
      * @return
      */
-    private Node find(Node node, E e) {
+    private boolean find(Node node, E e) {
         if (node == null)
-            return null;
+            return false;
 
         if (node.e.compareTo(e) > 0) {
             return find(node.left, e);
         } else if (node.e.compareTo(e) < 0) {
             return find(node.right, e);
-        } else if (node.e.compareTo(e) == 1) {
-            return node;
+        } else /*(node.e.compareTo(e) == 0)*/ {
+            return true;
         }
-
-        return node;
     }
 
     /**

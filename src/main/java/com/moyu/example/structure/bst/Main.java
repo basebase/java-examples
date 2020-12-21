@@ -14,7 +14,7 @@ public class Main {
 
 
         System.out.println(bst.find(100));
-//        System.out.println(bst.find(1));
+        System.out.println(bst.find(1));
 
         System.out.println("二分搜索树最小值: " + bst.findMin() + " 二分搜索树最大值: " + bst.findMax());
     }
