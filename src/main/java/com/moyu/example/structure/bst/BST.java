@@ -77,7 +77,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
 
 //            Node addNode = add(node.right, e);
 //            node.right = addNode;
-        } else if (node.e.compareTo(e) == 1) {
+        } else if (node.e.compareTo(e) == 0) {
            // 对于重复数据, 这里不考虑;
            return node;
         }
