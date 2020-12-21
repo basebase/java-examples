@@ -159,7 +159,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @return
      */
     private Node findMin(Node node) {
-        if (node.left == null)
+        if (node.left == null)      // 已经到叶子节点, 即最小值
             return node;
 
         Node n = findMin(node.left);
@@ -181,7 +181,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @return
      */
     private Node findMax(Node node) {
-        if (node.right == null)
+        if (node.right == null)         // 已经到叶子节点, 即最大值
             return node;
         Node n = findMax(node.right);
         return n;
