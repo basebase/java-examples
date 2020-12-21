@@ -115,6 +115,83 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         size ++;
     }
 
+
+    /***
+     * 查找二分搜索树元素
+     * @param e
+     * @return
+     */
+    public E find(E e) {
+        Node node = find(root, e);
+        if (node == null)
+            throw new IllegalArgumentException("没有找到查找的值, 请输入正确的查找值");
+        return node.e;
+    }
+
+    /**
+     * 递归查找二分搜索树元素
+     * @param node
+     * @param e
+     * @return
+     */
+    private Node find(Node node, E e) {
+        if (node == null)
+            return null;
+
+        if (node.e.compareTo(e) > 0) {
+            return find(node.left, e);
+        } else if (node.e.compareTo(e) < 0) {
+            return find(node.right, e);
+        } else if (node.e.compareTo(e) == 1) {
+            return node;
+        }
+
+        return node;
+    }
+
+    /**
+     * 查找最小元素
+     * @return
+     */
+    public E findMin() {
+        Node n = findMin(root);
+        return n.e;
+    }
+
+    /**
+     * 递归查找最小元素
+     * @param node
+     * @return
+     */
+    private Node findMin(Node node) {
+        if (node.left == null)
+            return node;
+
+        Node n = findMin(node.left);
+        return n;
+    }
+
+    /***
+     * 查找最大元素
+     * @return
+     */
+    public E findMax() {
+        Node n = findMax(root);
+        return n.e;
+    }
+
+    /**
+     * 递归查找最大元素
+     * @param node
+     * @return
+     */
+    private Node findMax(Node node) {
+        if (node.right == null)
+            return node;
+        Node n = findMax(node.right);
+        return n;
+    }
+
     public void echo(Node node, StringBuffer buffer) {
         if (node == null)
             return ;
