@@ -43,11 +43,13 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @param e
      */
     public void add(E e) {
-        if (root == null) {
-            root = new Node(e);
-            size ++;
-        } else
-            add(root, e);
+//        if (root == null) {
+//            root = new Node(e);
+//            size ++;
+//        } else
+//            add(root, e);
+
+        root = add(root, e);
     }
 
     /***
