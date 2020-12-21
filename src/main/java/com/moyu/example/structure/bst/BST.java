@@ -145,6 +145,26 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
     }
 
     /**
+     * 查找元素非递归写法
+     * @param e
+     * @return
+     */
+    public boolean nonRecursiveFind(E e) {
+        Node node = root;
+        while (node != null) {
+            if (node.e.compareTo(e) > 0) {
+                node = node.left;
+            } else if (node.e.compareTo(e) < 0) {
+                node = node.right;
+            } else {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * 查找最小元素
      * @return
      */
