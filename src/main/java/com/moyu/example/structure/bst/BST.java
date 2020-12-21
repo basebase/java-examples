@@ -49,6 +49,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
 //        } else
 //            add(root, e);
 
+        // 由于递归已经判断为空的情况, 所以不需要在上述情况下判断root节点是否为空
         root = add(root, e);
     }
 
@@ -62,6 +63,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
 
         if (node == null) {
             size ++;
+            // 这里返回一个新的Node节点, 如果根节点为空后就使用root来接收, 如果root不为空的情况下则返回原有的root节点
             return new Node(e);
         }
 
