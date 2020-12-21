@@ -39,7 +39,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
     }
 
     /**
-     * 插入元素
+     * 递归插入元素
      * @param e
      */
     public void add(E e) {
@@ -51,7 +51,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
     }
 
     /***
-     * 插入元素, 从节点node开始查找并插入
+     * 递归插入元素, 从节点node开始查找并插入
      * @param node
      * @param e
      * @return
@@ -81,7 +81,11 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         return node;
     }
 
-    public void nonAdd(E e) {
+    /***
+     * 非递归插入元素
+     * @param e
+     */
+    public void nonRecursiveAdd(E e) {
         if (root == null)
             root = new Node(e);
         else {
