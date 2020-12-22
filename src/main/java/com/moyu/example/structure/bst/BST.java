@@ -207,21 +207,61 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         return n;
     }
 
-    public void echo(Node node, StringBuffer buffer) {
-        if (node == null)
-            return ;
-
-        buffer.append(node.e).append(", ");
-        echo(node.left, buffer);
-        echo(node.right, buffer);
+    /**
+     * 二分搜索树前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
     }
 
+    /**
+     * 二分搜索树递归前序遍历, 先访问当前节点, 然后访问左右子树节点
+     * @param node
+     */
+    private void preOrder(Node node) {
+        if (node == null)
+            return ;
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
 
     @Override
     public String toString() {
-        StringBuffer buffer = new StringBuffer("[ ");
-        echo(root, buffer);
-        buffer.append("]");
+        StringBuffer buffer = new StringBuffer();
+        generateBSTString(root, 0, buffer);
+//        echo(root, buffer);
+        return buffer.toString();
+    }
+
+    /***
+     * 生成二分搜索树输出结果,
+     * @param node
+     * @param depth
+     * @param buffer
+     */
+    private void generateBSTString(Node node, int depth, StringBuffer buffer) {
+        if (node == null) {
+            buffer.append(generateDepthString(depth) + "null \n");
+            return ;
+        }
+
+        buffer.append(generateDepthString(depth) + node.e + "\n");
+        generateBSTString(node.left, depth + 1, buffer);
+        generateBSTString(node.right, depth + 1, buffer);
+    }
+
+    /***
+     * 根据树的深度输出的--
+     * @param depth
+     * @return
+     */
+    private String generateDepthString(int depth) {
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < depth; i++) {
+            buffer.append("--");
+        }
+
         return buffer.toString();
     }
 }
