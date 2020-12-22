@@ -1,5 +1,8 @@
 package com.moyu.example.structure.bst;
 
+import com.moyu.example.structure.stack.LinkedListStack;
+import com.moyu.example.structure.stack.Stack;
+
 /***
  * 实现一棵二分搜索树
  * @param <E>
@@ -228,6 +231,31 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         preOrder(node.left);
         // 3. 访问右子树
         preOrder(node.right);
+    }
+
+    /**
+     * 二分搜索树前序遍历非递归算法
+     */
+    public void preOrderNonRecursive() {
+        // 利用栈实现前序遍历
+        Stack<Node> stack = new LinkedListStack<>();
+        stack.push(root);
+
+        StringBuffer buffer = new StringBuffer("[");
+
+        while (!stack.isEmpty()) {
+            Node node = stack.pop();
+            if (node != null) {
+                buffer.append(node.e + ",");
+                stack.push(node.right);
+                stack.push(node.left);
+            }
+        }
+
+        buffer = buffer.deleteCharAt(buffer.length() - 1);
+        buffer.append("]");
+
+        System.out.println(buffer);
     }
 
     /**

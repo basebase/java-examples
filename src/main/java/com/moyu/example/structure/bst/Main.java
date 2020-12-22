@@ -21,13 +21,16 @@ public class Main {
 
         System.out.println("二分搜索树最小值: " + bst.findMin() + " 二分搜索树最大值: " + bst.findMax());
 
-        System.out.println("======================================");
+        System.out.println("=================递归前序遍历=======================");
         bst.preOrder();
 
-        System.out.println("======================================");
+        System.out.println("=================非递归前序遍历=====================");
+        bst.preOrderNonRecursive();
+
+        System.out.println("=================递归中序遍历=======================");
         bst.inOrder();
 
-        System.out.println("======================================");
+        System.out.println("=================递归后序遍历=======================");
         bst.postOrder();
     }
 }
