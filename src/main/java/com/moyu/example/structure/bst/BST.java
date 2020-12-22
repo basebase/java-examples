@@ -226,6 +226,31 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         preOrder(node.right);
     }
 
+    /**
+     * 二分搜索树中序遍历
+     */
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    /***
+     * 二分搜索树递归中序遍历
+     * @param node
+     */
+    private void inOrder(Node node) {
+        if (node == null)
+            return ;
+
+        // 1. 访问左子树
+        inOrder(node.left);
+
+        // 2. 访问当前节点
+        System.out.println(node.e);
+
+        // 3. 访问右子树
+        inOrder(node.right);
+    }
+
     @Override
     public String toString() {
         StringBuffer buffer = new StringBuffer();

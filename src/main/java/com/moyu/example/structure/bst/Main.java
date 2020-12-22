@@ -21,7 +21,10 @@ public class Main {
 
         System.out.println("二分搜索树最小值: " + bst.findMin() + " 二分搜索树最大值: " + bst.findMax());
 
-        System.out.println();
+        System.out.println("======================================");
         bst.preOrder();
+
+        System.out.println("======================================");
+        bst.inOrder();
     }
 }
