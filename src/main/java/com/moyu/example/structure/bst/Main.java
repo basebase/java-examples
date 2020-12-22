@@ -26,5 +26,8 @@ public class Main {
 
         System.out.println("======================================");
         bst.inOrder();
+
+        System.out.println("======================================");
+        bst.postOrder();
     }
 }

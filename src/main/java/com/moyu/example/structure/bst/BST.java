@@ -221,8 +221,12 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
     private void preOrder(Node node) {
         if (node == null)
             return ;
+
+        // 1. 访问当前节点
         System.out.println(node.e);
+        // 2. 访问左子树
         preOrder(node.left);
+        // 3. 访问右子树
         preOrder(node.right);
     }
 
@@ -243,12 +247,33 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
 
         // 1. 访问左子树
         inOrder(node.left);
-
         // 2. 访问当前节点
         System.out.println(node.e);
-
         // 3. 访问右子树
         inOrder(node.right);
+    }
+
+    /**
+     * 二分搜索树后序遍历
+     */
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    /**
+     * 二分搜索树后序遍历, 递归算法
+     * @param node
+     */
+    private void postOrder(Node node) {
+        if (node == null)
+            return ;
+
+        // 1. 访问左子树
+        postOrder(node.left);
+        // 2. 访问右子树
+        postOrder(node.right);
+        // 3. 访问节点
+        System.out.println(node.e);
     }
 
     @Override
