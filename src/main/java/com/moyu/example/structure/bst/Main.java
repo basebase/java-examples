@@ -32,5 +32,8 @@ public class Main {
 
         System.out.println("=================递归后序遍历=======================");
         bst.postOrder();
+
+        System.out.println("====================层序遍历=======================");
+        bst.levelOrder();
     }
 }

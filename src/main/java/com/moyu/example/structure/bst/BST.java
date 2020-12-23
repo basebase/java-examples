@@ -1,5 +1,7 @@
 package com.moyu.example.structure.bst;
 
+import com.moyu.example.structure.queue.LinkedListQueue;
+import com.moyu.example.structure.queue.Queue;
 import com.moyu.example.structure.stack.LinkedListStack;
 import com.moyu.example.structure.stack.Stack;
 
@@ -302,6 +304,26 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         postOrder(node.right);
         // 3. 访问节点
         System.out.println(node.e);
+    }
+
+    /***
+     * 二分搜索树层序遍历
+     */
+    public void levelOrder() {
+        Queue<Node> queue = new LinkedListQueue<>();
+        queue.enqueue(root);
+
+        while (!queue.isEmpty()) {
+            Node node = queue.dequeue();
+            System.out.println(node.e);
+
+            if (node.left != null)
+                queue.enqueue(node.left);
+
+            if (node.right != null)
+                queue.enqueue(node.right);
+
+        }
     }
 
     @Override
