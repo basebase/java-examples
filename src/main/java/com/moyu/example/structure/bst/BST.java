@@ -354,6 +354,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
              *     2. 返回当前节点的右孩子, 如果右孩子没有节点则为null, 如果有节点则会重新挂载到新的节点上
              */
             Node retNode = node.right;
+            size --;
             return retNode;
         }
 
@@ -385,6 +386,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
          */
         if (node.right == null) {
             Node retNode = node.left;
+            size --;
             return retNode;
         }
 
