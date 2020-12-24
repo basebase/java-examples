@@ -174,6 +174,8 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @return
      */
     public E findMin() {
+        if (size == 0)
+            throw new IllegalArgumentException("当前二分搜索树为空");
         Node n = findMin(root);
         return n.e;
     }
@@ -196,6 +198,8 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      * @return
      */
     public E findMax() {
+        if (size == 0)
+            throw new IllegalArgumentException("当前二分搜索树为空");
         Node n = findMax(root);
         return n.e;
     }
@@ -324,6 +328,69 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
                 queue.enqueue(node.right);
 
         }
+    }
+
+
+    /**
+     * 删除最小值, 并返回删除元素内容
+     * @return
+     */
+    public E removeMin() {
+        E e = findMin();
+        removeMin(root);
+        return e;
+    }
+
+    /***
+     * 递归删除最小元素
+     * @param node
+     * @return
+     */
+    private Node removeMin(Node node) {
+        // 1. 一直查询左子树, 找到最小节点, 然后返回其右子树
+        if (node.left == null) {
+            /**
+             *     1. 查找最小的值所有该节点的左孩子一定是为null
+             *     2. 返回当前节点的右孩子, 如果右孩子没有节点则为null, 如果有节点则会重新挂载到新的节点上
+             */
+            Node retNode = node.right;
+            return retNode;
+        }
+
+        Node retNode = removeMin(node.left);
+        // 将返回最小节点的右孩子挂载到当前节点的左孩子上
+        node.left = retNode;
+        return node;
+    }
+
+    /***
+     * 删除最大值, 返回删除元素内容
+     * @return
+     */
+    public E removeMax() {
+        E e = findMax();
+        removeMax(root);
+        return e;
+    }
+
+    /***
+     * 递归删除最大元素
+     * @param node
+     * @return
+     */
+    private Node removeMax(Node node) {
+
+        /**
+         * 和删除最小元素同理, 只不过是left改为right而已
+         */
+        if (node.right == null) {
+            Node retNode = node.left;
+            return retNode;
+        }
+
+        Node retNode = removeMax(node.right);
+        node.right = retNode;
+        return node;
     }
 
     @Override

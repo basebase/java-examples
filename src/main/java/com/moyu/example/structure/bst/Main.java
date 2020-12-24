@@ -2,7 +2,7 @@ package com.moyu.example.structure.bst;
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] nums = {5, 3, 6, 2, 4, 8};
+        Integer[] nums = {70,60,80,50,65,75,85,40,45,68,90,88,95};
         BST<Integer> bst = new BST<>();
         for (Integer num : nums) {
             bst.add(num);
@@ -34,6 +34,26 @@ public class Main {
         bst.postOrder();
 
         System.out.println("====================层序遍历=======================");
+        bst.levelOrder();
+
+
+        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+        bst.levelOrder();
+
+        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+        bst.levelOrder();
+
+        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+        bst.levelOrder();
+
+        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+        bst.levelOrder();
+
+
+        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
+        bst.levelOrder();
+
+        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
         bst.levelOrder();
     }
 }
