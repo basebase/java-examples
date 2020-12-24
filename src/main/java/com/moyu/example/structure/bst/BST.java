@@ -337,7 +337,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      */
     public E removeMin() {
         E e = findMin();
-        removeMin(root);
+        root = removeMin(root);
         return e;
     }
 
@@ -370,7 +370,7 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
      */
     public E removeMax() {
         E e = findMax();
-        removeMax(root);
+        root = removeMax(root);
         return e;
     }
 
