@@ -395,6 +395,78 @@ public class BST<E extends Comparable<E>> {     // 对于这里的泛型我们�
         return node;
     }
 
+    /**
+     * 删除二分搜索树任意节点值
+     * @param e
+     */
+    public void remove(E e) {
+        boolean b = find(e);
+        if (b) {
+            root = remove(root, e);
+        }
+    }
+
+    /**
+     * 递归删除二分搜索树中任意节点值
+     * @param node
+     * @param e
+     * @return
+     */
+    private Node remove(Node node, E e) {
+        if (node.e.compareTo(e) > 0) {
+            node.left = remove(node.left, e);
+        } else if (node.e.compareTo(e) < 0) {
+            node.right = remove(node.right, e);
+        } else {
+
+            /**
+             *      找到要删除的节点值
+             *          1. 判断是否只有做孩子
+             *          2. 判断是否只有右孩子
+             *          3. 判断左右孩子都有
+             */
+
+            if (node.left != null && node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size --;
+                return leftNode;
+            } else if (node.left == null && node.right != null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size --;
+                return rightNode;
+            } else {
+
+                /***
+                 *      复杂的是左右孩子都存在
+                 *          1. 找出右孩子节点最小节点
+                 *          2. 删除右孩子最小节点
+                 *          3. 将找出的节点左右子树挂载新的节点
+                 *
+                 */
+
+                Node leftNode = node.left;
+                // 1. 找到待删除节点的后继节点
+                Node successor = findMin(node.right);
+                // 2. 删除待删除节点的后继节点
+                Node minNode = removeMin(node.right);
+                // 后继节点右子树指向删除后的树结构
+                successor.right = minNode;
+                // 后继节点左子树则为待删除节点的左子树
+                successor.left = leftNode;
+
+
+                node.left = null;
+                node.right = null;
+                return successor;
+            }
+
+        }
+
+        return node;
+    }
+
     @Override
     public String toString() {
         StringBuffer buffer = new StringBuffer();

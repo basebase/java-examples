@@ -8,52 +8,58 @@ public class Main {
             bst.add(num);
         }
 
-        System.out.println(bst.toString());
+//        System.out.println(bst.toString());
+//
+//        System.out.println("======================================");
+//
+//
+//        System.out.println(bst.find(100));
+//        System.out.println(bst.find(2));
+//
+//        System.out.println(bst.nonRecursiveFind(20));
+//        System.out.println(bst.nonRecursiveFind(8));
+//
+//        System.out.println("二分搜索树最小值: " + bst.findMin() + " 二分搜索树最大值: " + bst.findMax());
+//
+//        System.out.println("=================递归前序遍历=======================");
+//        bst.preOrder();
+//
+//        System.out.println("=================非递归前序遍历=====================");
+//        bst.preOrderNonRecursive();
+//
+//        System.out.println("=================递归中序遍历=======================");
+//        bst.inOrder();
+//
+//        System.out.println("=================递归后序遍历=======================");
+//        bst.postOrder();
+//
+//        System.out.println("====================层序遍历=======================");
+//        bst.levelOrder();
 
-        System.out.println("======================================");
 
+//        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+//        bst.levelOrder();
+//
+//        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+//        bst.levelOrder();
+//
+//        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+//        bst.levelOrder();
+//
+//        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
+//        bst.levelOrder();
+//
+//
+//        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
+//        bst.levelOrder();
+//
+//        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
+//        bst.levelOrder();
 
-        System.out.println(bst.find(100));
-        System.out.println(bst.find(2));
-
-        System.out.println(bst.nonRecursiveFind(20));
-        System.out.println(bst.nonRecursiveFind(8));
-
-        System.out.println("二分搜索树最小值: " + bst.findMin() + " 二分搜索树最大值: " + bst.findMax());
-
-        System.out.println("=================递归前序遍历=======================");
-        bst.preOrder();
-
-        System.out.println("=================非递归前序遍历=====================");
-        bst.preOrderNonRecursive();
-
-        System.out.println("=================递归中序遍历=======================");
-        bst.inOrder();
-
-        System.out.println("=================递归后序遍历=======================");
-        bst.postOrder();
-
-        System.out.println("====================层序遍历=======================");
+        System.out.println("删除前层序遍历: ");
         bst.levelOrder();
-
-
-        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
-        bst.levelOrder();
-
-        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
-        bst.levelOrder();
-
-        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
-        bst.levelOrder();
-
-        System.out.println("删除元素 " + bst.removeMin() + " 删除后结果: ");
-        bst.levelOrder();
-
-
-        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
-        bst.levelOrder();
-
-        System.out.println("删除元素 " + bst.removeMax() + " 删除后结果: ");
+        bst.remove(85);
+        System.out.println("删除后层序遍历: ");
         bst.levelOrder();
     }
 }
