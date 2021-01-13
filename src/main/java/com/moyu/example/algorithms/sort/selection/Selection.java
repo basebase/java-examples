@@ -41,29 +41,6 @@ public class Selection<E extends Comparable<E>> implements Sort<E> {
         nums[min] = e;
     }
 
-    @Override
-    public void show(E[] e) {
-        StringBuffer res = new StringBuffer("[");
-        for (int i = 0; i < e.length; i++) {
-            res.append(e[i] + ",");
-        }
-
-        res = res.deleteCharAt(res.length() - 1);
-        res.append("]");
-        System.out.println(res.toString());
-    }
-
-    @Override
-    public boolean isSorted(E[] e) {
-        for (int i = 0; i < e.length - 1; i++) {
-            if (e[i].compareTo(e[i + 1]) > 0)
-                throw new IllegalArgumentException("排序出错, 请检查程序");
-        }
-
-        System.out.println("排序正常...");
-        return true;
-    }
-
     public static void main(String[] args) {
         Integer[] nums = new Integer[1000];
         Sort<Integer> selection = new Selection<>();
